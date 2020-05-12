@@ -1,0 +1,28 @@
+<h1>Listing Schedulings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for scheduling <- @schedulings do %>
+    <tr>
+      <td><%= scheduling.name %></td>
+      <td><%= scheduling.id %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.scheduling_path(@conn, :show, scheduling) %></span>
+        <span><%= link "Edit", to: Routes.scheduling_path(@conn, :edit, scheduling) %></span>
+        <span><%= link "Delete", to: Routes.scheduling_path(@conn, :delete, scheduling), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Scheduling", to: Routes.scheduling_path(@conn, :new) %></span>
